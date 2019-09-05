@@ -26,12 +26,15 @@ public class Deck {
     for (int i = 0; i < 52; i++) {
       orderedDeck.add(i);
     }
-    return orderedDeck;
+    return new ArrayList<>(orderedDeck);
   }
 
   static int getCardValue(int cardNumber) {
     int type = cardNumber % 13;
-    if (type <= 9) {
+    if (type == 0) {
+      return 11;
+    }
+    else if (type <= 9) {
       return type + 1;
     }
     else {
@@ -64,7 +67,7 @@ public class Deck {
         cardString += "Ace";
         break;
       default:
-        cardString = cardString + Integer.toString(type + 1);
+        cardString = cardString + (type + 1);
     }
 
     cardString += " of ";
